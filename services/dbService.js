@@ -8,6 +8,7 @@ try {
   try {
     mongoose = require(path.join(__dirname, '..', '..', 'tbs-server-development', 'node_modules', 'mongoose'));
   } catch (err) {
+    console.warn('[Database] Mongoose not found in node_modules. Please run: npm install mongoose');
     mongoose = null;
   }
 }
