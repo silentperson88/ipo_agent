@@ -1,0 +1,1718 @@
+{
+  "scrapedAt": "2026-08-18T09:53:06.780Z",
+  "totalCount": 30,
+  "openCount": 8,
+  "closingTodayCount": 3,
+  "ipos": [
+    {
+      "id": 1934,
+      "name": "Tempsens Instruments (India)",
+      "category": "Mainboard",
+      "sector": "Other Consumer Services",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": 300,
+        "lotSize": 50,
+        "minInvestment": 15000
+      },
+      "gmp": {
+        "amount": 158,
+        "percent": 52.67,
+        "lowGmp": 65,
+        "highGmp": 158,
+        "hasRange": true,
+        "estListingPrice": 458,
+        "updatedOn": "18-Aug 15:00"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "₹650.00 Cr",
+      "peRatio": 34.05,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-20",
+        "close": "2026-08-24",
+        "allotment": "2026-08-25",
+        "listing": "2026-08-28"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/tempsens-instruments-india-ipo/1934/",
+      "rawRating": "&#128293;&#128293;&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 5,
+        "stars": "⭐⭐⭐⭐⭐",
+        "verdict": "🚀 BLOCKBUSTER PIPELINE",
+        "riskLevel": "Low-Moderate",
+        "expectedProfitPerLot": 7900,
+        "strategy": "Extraordinary anticipation (+52.67%). Pre-apply or reserve capital for opening day.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "SURGING",
+          "trendIcon": "📈",
+          "trendLabel": "Surging (+143% from low 21.7%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 21.7,
+          "highPercent": 52.7
+        },
+        "isStrongApply": true,
+        "isBlockbuster": true,
+        "isApply": true
+      }
+    },
+    {
+      "id": 1928,
+      "name": "Behari Lal Engineering",
+      "category": "Mainboard",
+      "sector": "Iron & Steel Products",
+      "status": "Closed",
+      "priceBand": {
+        "price": 285,
+        "lotSize": 52,
+        "minInvestment": 14820
+      },
+      "gmp": {
+        "amount": 121,
+        "percent": 42.46,
+        "lowGmp": 25,
+        "highGmp": 121,
+        "hasRange": true,
+        "estListingPrice": 406,
+        "updatedOn": "18-Aug 14:57"
+      },
+      "subscription": {
+        "total": 118.07,
+        "raw": "118.07x"
+      },
+      "issueSize": "₹301.62 Cr",
+      "peRatio": 17.21,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-12",
+        "close": "2026-08-14",
+        "allotment": "2026-08-17",
+        "listing": "2026-08-19"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/behari-lal-engineering-ipo/1928/",
+      "rawRating": "&#128293;&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "💰 STRONG LISTING EXPECTED",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 6292,
+        "strategy": "Bidding closed. Final transition was: Surging (+382% from low 8.8%).",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "SURGING",
+          "trendIcon": "📈",
+          "trendLabel": "Surging (+382% from low 8.8%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 8.8,
+          "highPercent": 42.5
+        },
+        "isStrongApply": true,
+        "isBlockbuster": false,
+        "isApply": true
+      }
+    },
+    {
+      "id": 1790,
+      "name": "Shiprocket",
+      "category": "Mainboard",
+      "sector": "Logistics Solution Provider",
+      "status": "Closed",
+      "priceBand": {
+        "price": 97,
+        "lotSize": 154,
+        "minInvestment": 14938
+      },
+      "gmp": {
+        "amount": 34.75,
+        "percent": 35.82,
+        "lowGmp": 14,
+        "highGmp": 36.5,
+        "hasRange": true,
+        "estListingPrice": 131.75,
+        "updatedOn": "18-Aug 14:58"
+      },
+      "subscription": {
+        "total": 102.28,
+        "raw": "102.28x"
+      },
+      "issueSize": "₹1617.48 Cr",
+      "peRatio": 77.6,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-12",
+        "close": "2026-08-14",
+        "allotment": "2026-08-17",
+        "listing": "2026-08-19"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/shiprocket-ipo/1790/",
+      "rawRating": "&#128293;&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "💰 STRONG LISTING EXPECTED",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 5352,
+        "strategy": "Bidding closed. Final transition was: Surging (+149% from low 14.4%).",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "SURGING",
+          "trendIcon": "📈",
+          "trendLabel": "Surging (+149% from low 14.4%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 14.4,
+          "highPercent": 37.6
+        },
+        "isStrongApply": true,
+        "isBlockbuster": false,
+        "isApply": true
+      }
+    },
+    {
+      "id": 2092,
+      "name": "Technocrats Plasma Systems",
+      "category": "SME",
+      "sector": "Other Consumer Services",
+      "status": "Closing Today",
+      "priceBand": {
+        "price": 132,
+        "lotSize": 1000,
+        "minInvestment": 132000
+      },
+      "gmp": {
+        "amount": 43,
+        "percent": 32.58,
+        "lowGmp": 12,
+        "highGmp": 43,
+        "hasRange": true,
+        "estListingPrice": 175,
+        "updatedOn": "18-Aug 14:55"
+      },
+      "subscription": {
+        "total": 152.88,
+        "raw": "152.88x"
+      },
+      "issueSize": "₹60.98 Cr",
+      "peRatio": 11.38,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-14",
+        "close": "2026-08-18",
+        "allotment": "2026-08-19",
+        "listing": "2026-08-21"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/technocrats-plasma-systems-ipo/2092/",
+      "rawRating": "&#128293;&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 4,
+        "stars": "⭐⭐⭐⭐",
+        "verdict": "🟢 APPLY FOR LISTING GAIN",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 43000,
+        "strategy": "Healthy listing gain potential. Check final QIB subscription to ensure institutional demand remains positive.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "SURGING",
+          "trendIcon": "📈",
+          "trendLabel": "Surging (+258% from low 9.1%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": true,
+          "lowPercent": 9.1,
+          "highPercent": 32.6
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": true
+      }
+    },
+    {
+      "id": 2122,
+      "name": "Dhoot Transmission",
+      "category": "Mainboard",
+      "sector": "General",
+      "status": "Closed",
+      "priceBand": {
+        "price": 871,
+        "lotSize": 17,
+        "minInvestment": 14807
+      },
+      "gmp": {
+        "amount": 262,
+        "percent": 30.08,
+        "lowGmp": 146,
+        "highGmp": 276,
+        "hasRange": true,
+        "estListingPrice": 1133,
+        "updatedOn": "17-Aug 8:54"
+      },
+      "subscription": {
+        "total": 75.06,
+        "raw": "75.06x"
+      },
+      "issueSize": "₹3066.89 Cr",
+      "peRatio": 41.36,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-10",
+        "close": "2026-08-12",
+        "allotment": "2026-08-13",
+        "listing": "2026-08-17"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/dhoot-transmission-ipo/2122/",
+      "rawRating": "&#128293;&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🟢 MODERATE GAIN EXPECTED",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 4454,
+        "strategy": "Bidding closed. Final transition was: Surging (+79% from low 16.8%).",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "SURGING",
+          "trendIcon": "📈",
+          "trendLabel": "Surging (+79% from low 16.8%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 16.8,
+          "highPercent": 31.7
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": true
+      }
+    },
+    {
+      "id": 2252,
+      "name": "Credent Connect",
+      "category": "SME",
+      "sector": "Transport Related Services",
+      "status": "Closed",
+      "priceBand": {
+        "price": 189,
+        "lotSize": 600,
+        "minInvestment": 113400
+      },
+      "gmp": {
+        "amount": 45,
+        "percent": 23.81,
+        "lowGmp": 35,
+        "highGmp": 75,
+        "hasRange": true,
+        "estListingPrice": 234,
+        "updatedOn": "18-Aug 15:01"
+      },
+      "subscription": {
+        "total": 153.13,
+        "raw": "153.13x"
+      },
+      "issueSize": "₹93.90 Cr",
+      "peRatio": 13.58,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-13",
+        "close": "2026-08-17",
+        "allotment": "2026-08-18",
+        "listing": "2026-08-20"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/credent-connect-ipo/2252/",
+      "rawRating": "&#128293;&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🟢 MODERATE GAIN EXPECTED",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 27000,
+        "strategy": "Bidding closed. Final transition was: Cooling down (-40% from peak 39.7%).",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-40% from peak 39.7%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 18.5,
+          "highPercent": 39.7
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": true
+      }
+    },
+    {
+      "id": 1820,
+      "name": "Skyways Air",
+      "category": "Mainboard",
+      "sector": "Logistics Solution Provider",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": 138,
+        "lotSize": 100,
+        "minInvestment": 13800
+      },
+      "gmp": {
+        "amount": 31,
+        "percent": 22.46,
+        "lowGmp": 19,
+        "highGmp": 31,
+        "hasRange": true,
+        "estListingPrice": 169,
+        "updatedOn": "18-Aug 14:58"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "₹582.80 Cr",
+      "peRatio": null,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-24",
+        "close": "2026-08-27",
+        "allotment": "2026-08-28",
+        "listing": "2026-09-01"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/skyways-air-ipo/1820/",
+      "rawRating": "&#128293;&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3.5,
+        "stars": "⭐⭐⭐",
+        "verdict": "🟡 PROMISING PIPELINE",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 3100,
+        "strategy": "Promising start (Surging (+63% from low 13.8%)). Track Anchor investor book release 1 day prior to open.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "SURGING",
+          "trendIcon": "📈",
+          "trendLabel": "Surging (+63% from low 13.8%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 13.8,
+          "highPercent": 22.5
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": true
+      }
+    },
+    {
+      "id": 1938,
+      "name": "Augmont Enterprises",
+      "category": "Mainboard",
+      "sector": "Gems, Jewellery And Watches",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": 788,
+        "lotSize": 19,
+        "minInvestment": 14972
+      },
+      "gmp": {
+        "amount": 165,
+        "percent": 20.94,
+        "lowGmp": 165,
+        "highGmp": 165,
+        "hasRange": true,
+        "estListingPrice": 953,
+        "updatedOn": "18-Aug 15:01"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "₹825.00 Cr",
+      "peRatio": 18.89,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-21",
+        "close": "2026-08-25",
+        "allotment": "2026-08-26",
+        "listing": "2026-08-31"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/augmont-enterprises-ipo/1938/",
+      "rawRating": "&#128293;&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3.5,
+        "stars": "⭐⭐⭐",
+        "verdict": "🟡 PROMISING PIPELINE",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 3135,
+        "strategy": "Promising start (Holding steady at +20.94%). Track Anchor investor book release 1 day prior to open.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "STABLE",
+          "trendIcon": "➡️",
+          "trendLabel": "Holding steady at +20.94%",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 20.9,
+          "highPercent": 20.9
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": true
+      }
+    },
+    {
+      "id": 1612,
+      "name": "Sunshine Pictures",
+      "category": "Mainboard",
+      "sector": "Film Production, Distribution & Exhibition",
+      "status": "Open",
+      "priceBand": {
+        "price": 360,
+        "lotSize": 41,
+        "minInvestment": 14760
+      },
+      "gmp": {
+        "amount": 75,
+        "percent": 20.83,
+        "lowGmp": 17,
+        "highGmp": 75,
+        "hasRange": true,
+        "estListingPrice": 435,
+        "updatedOn": "18-Aug 14:56"
+      },
+      "subscription": {
+        "total": 3.24,
+        "raw": "3.24x"
+      },
+      "issueSize": "₹282.14 Cr",
+      "peRatio": 23.7,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-18",
+        "close": "2026-08-20",
+        "allotment": "2026-08-21",
+        "listing": "2026-08-25"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/sunshine-pictures-ipo/1612/",
+      "rawRating": "&#128293;&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 4,
+        "stars": "⭐⭐⭐⭐",
+        "verdict": "🟢 APPLY FOR LISTING GAIN",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 3075,
+        "strategy": "Solid demand (Surging (+343% from low 4.7%)). Track Day 2 QIB numbers before bidding.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "SURGING",
+          "trendIcon": "📈",
+          "trendLabel": "Surging (+343% from low 4.7%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": true,
+          "lowPercent": 4.7,
+          "highPercent": 20.8
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": true
+      }
+    },
+    {
+      "id": 1854,
+      "name": "Technocraft Ventures",
+      "category": "Mainboard",
+      "sector": "General",
+      "status": "Closed",
+      "priceBand": {
+        "price": 212,
+        "lotSize": 70,
+        "minInvestment": 14840
+      },
+      "gmp": {
+        "amount": 42,
+        "percent": 19.81,
+        "lowGmp": 10,
+        "highGmp": 42,
+        "hasRange": true,
+        "estListingPrice": 254,
+        "updatedOn": "14-Aug 9:28"
+      },
+      "subscription": {
+        "total": 38.69,
+        "raw": "38.69x"
+      },
+      "issueSize": "₹251.88 Cr",
+      "peRatio": 14.73,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-07",
+        "close": "2026-08-11",
+        "allotment": "2026-08-12",
+        "listing": "2026-08-14"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/technocraft-ventures-ipo/1854/",
+      "rawRating": "&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🟡 MILD GAIN / FLAT",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 2940,
+        "strategy": "Bidding closed. Final transition was: Surging (+321% from low 4.7%).",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "SURGING",
+          "trendIcon": "📈",
+          "trendLabel": "Surging (+321% from low 4.7%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 4.7,
+          "highPercent": 19.8
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 1799,
+      "name": "Lalithaa Jewellery Mart",
+      "category": "Mainboard",
+      "sector": "Gems, Jewellery And Watches",
+      "status": "Open",
+      "priceBand": {
+        "price": 201,
+        "lotSize": 74,
+        "minInvestment": 14874
+      },
+      "gmp": {
+        "amount": 33,
+        "percent": 16.42,
+        "lowGmp": 17,
+        "highGmp": 41,
+        "hasRange": true,
+        "estListingPrice": 234,
+        "updatedOn": "18-Aug 14:59"
+      },
+      "subscription": {
+        "total": 2.71,
+        "raw": "2.71x"
+      },
+      "issueSize": "₹1700.00 Cr",
+      "peRatio": 9.95,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-17",
+        "close": "2026-08-19",
+        "allotment": "2026-08-20",
+        "listing": "2026-08-24"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/lalithaa-jewellery-mart-ipo/1799/",
+      "rawRating": "&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "⏳ WAIT FOR DAY 3 (QIB DEMAND)",
+        "riskLevel": "Moderate-High",
+        "expectedProfitPerLot": 2442,
+        "strategy": "Moderate sentiment. Don't rush on Day 1; wait for final day institutional bidding numbers.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "CONSOLIDATING",
+          "trendIcon": "⚖️",
+          "trendLabel": "Consolidating (8.5% - 20.4%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 8.5,
+          "highPercent": 20.4
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 1865,
+      "name": "Molbio Diagnostics",
+      "category": "Mainboard",
+      "sector": "General",
+      "status": "Closed",
+      "priceBand": {
+        "price": 807,
+        "lotSize": 18,
+        "minInvestment": 14526
+      },
+      "gmp": {
+        "amount": 116,
+        "percent": 14.37,
+        "lowGmp": 115,
+        "highGmp": 220,
+        "hasRange": true,
+        "estListingPrice": 923,
+        "updatedOn": "17-Aug 8:53"
+      },
+      "subscription": {
+        "total": 70.27,
+        "raw": "70.27x"
+      },
+      "issueSize": "₹939.70 Cr",
+      "peRatio": 55.43,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-10",
+        "close": "2026-08-12",
+        "allotment": "2026-08-13",
+        "listing": "2026-08-17"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/molbio-diagnostics-ipo/1865/",
+      "rawRating": "&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🟡 MILD GAIN / FLAT",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 2088,
+        "strategy": "Bidding closed. Final transition was: Cooling down (-47% from peak 27.3%).",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-47% from peak 27.3%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 14.3,
+          "highPercent": 27.3
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 1838,
+      "name": "Milky Mist Dairy Food",
+      "category": "Mainboard",
+      "sector": "General",
+      "status": "Closed",
+      "priceBand": {
+        "price": 140,
+        "lotSize": 107,
+        "minInvestment": 14980
+      },
+      "gmp": {
+        "amount": 19.7,
+        "percent": 14.07,
+        "lowGmp": 18,
+        "highGmp": 27,
+        "hasRange": true,
+        "estListingPrice": 159.7,
+        "updatedOn": "18-Aug 9:34"
+      },
+      "subscription": {
+        "total": 59.08,
+        "raw": "59.08x"
+      },
+      "issueSize": "₹1553.00 Cr",
+      "peRatio": 73.68,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-11",
+        "close": "2026-08-13",
+        "allotment": "2026-08-14",
+        "listing": "2026-08-18"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/milky-mist-dairy-food-ipo/1838/",
+      "rawRating": "&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🟡 MILD GAIN / FLAT",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 2108,
+        "strategy": "Bidding closed. Final transition was: Cooling down (-27% from peak 19.3%).",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-27% from peak 19.3%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 12.9,
+          "highPercent": 19.3
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2024,
+      "name": "Mopshop Distribution",
+      "category": "SME",
+      "sector": "Other Consumer Services",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": 138,
+        "lotSize": 1000,
+        "minInvestment": 138000
+      },
+      "gmp": {
+        "amount": 18,
+        "percent": 13.04,
+        "lowGmp": 10,
+        "highGmp": 18,
+        "hasRange": true,
+        "estListingPrice": 156,
+        "updatedOn": "18-Aug 14:59"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "₹27.26 Cr",
+      "peRatio": 22.22,
+      "hasAnchor": false,
+      "dates": {
+        "open": "2026-08-19",
+        "close": "2026-08-21",
+        "allotment": "2026-08-24",
+        "listing": "2026-08-26"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/mopshop-distribution-ipo/2024/",
+      "rawRating": "&#128293;&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🟡 MONITOR CLOSELY",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 18000,
+        "strategy": "Early quotes forming. Monitor as opening date approaches.",
+        "institutionalBacking": "Standard",
+        "transition": {
+          "trendDirection": "SURGING",
+          "trendIcon": "📈",
+          "trendLabel": "Surging (+81% from low 7.2%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 7.2,
+          "highPercent": 13
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2238,
+      "name": "Sumax Engineering",
+      "category": "SME",
+      "sector": "Other Industrial Products",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": 101,
+        "lotSize": 1200,
+        "minInvestment": 121200
+      },
+      "gmp": {
+        "amount": 10,
+        "percent": 9.9,
+        "lowGmp": 10,
+        "highGmp": 10,
+        "hasRange": true,
+        "estListingPrice": 111,
+        "updatedOn": "18-Aug 15:01"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "₹53.40 Cr",
+      "peRatio": 11.66,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-25",
+        "close": "2026-08-28",
+        "allotment": "2026-08-31",
+        "listing": "2026-09-02"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/sumax-engineering-ipo/2238/",
+      "rawRating": "&#128293;&#128293;",
+      "analysis": {
+        "rating": 2.5,
+        "stars": "⭐⭐",
+        "verdict": "⏳ WAIT & WATCH (NASCENT)",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 12000,
+        "strategy": "Quotes still nascent. Avoid premature conclusions; wait for official opening.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "STABLE",
+          "trendIcon": "➡️",
+          "trendLabel": "Holding steady at +9.9%",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 9.9,
+          "highPercent": 9.9
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 1868,
+      "name": "LEAP India",
+      "category": "Mainboard",
+      "sector": "General",
+      "status": "Closed",
+      "priceBand": {
+        "price": 159,
+        "lotSize": 94,
+        "minInvestment": 14946
+      },
+      "gmp": {
+        "amount": 13,
+        "percent": 8.18,
+        "lowGmp": 3,
+        "highGmp": 19.5,
+        "hasRange": true,
+        "estListingPrice": 172,
+        "updatedOn": "14-Aug 9:28"
+      },
+      "subscription": {
+        "total": 8.82,
+        "raw": "8.82x"
+      },
+      "issueSize": "₹2480.00 Cr",
+      "peRatio": 104.61,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-07",
+        "close": "2026-08-11",
+        "allotment": "2026-08-12",
+        "listing": "2026-08-14"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/leap-india-ipo/1868/",
+      "rawRating": "&#128293;&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🛡️ DISCOUNT LISTING RISK",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 1222,
+        "strategy": "Bidding closed. Final transition was: Consolidating (1.9% - 12.3%).",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "CONSOLIDATING",
+          "trendIcon": "⚖️",
+          "trendLabel": "Consolidating (1.9% - 12.3%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 1.9,
+          "highPercent": 12.3
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 1932,
+      "name": "Shankesh Jewellers",
+      "category": "Mainboard",
+      "sector": "Gems, Jewellery And Watches",
+      "status": "Open",
+      "priceBand": {
+        "price": 93,
+        "lotSize": 160,
+        "minInvestment": 14880
+      },
+      "gmp": {
+        "amount": 4,
+        "percent": 4.3,
+        "lowGmp": 2,
+        "highGmp": 8,
+        "hasRange": true,
+        "estListingPrice": 97,
+        "updatedOn": "18-Aug 15:02"
+      },
+      "subscription": {
+        "total": 0.25,
+        "raw": "0.25x"
+      },
+      "issueSize": "₹367.18 Cr",
+      "peRatio": 10.24,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-18",
+        "close": "2026-08-20",
+        "allotment": "2026-08-21",
+        "listing": "2026-08-25"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/shankesh-jewellers-ipo/1932/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 2,
+        "stars": "⭐⭐",
+        "verdict": "⚠️ AVOID UNLESS QIB SURGES",
+        "riskLevel": "High",
+        "expectedProfitPerLot": 640,
+        "strategy": "Subdued early GMP. Only consider if institutional bidding unexpectedly explodes on Day 3.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-50% from peak 8.6%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 2.2,
+          "highPercent": 8.6
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 1828,
+      "name": "Gaja Alternative Asset Management",
+      "category": "Mainboard",
+      "sector": "Asset Management Company",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": 160,
+        "lotSize": 93,
+        "minInvestment": 14880
+      },
+      "gmp": {
+        "amount": 5,
+        "percent": 3.12,
+        "lowGmp": 5,
+        "highGmp": 7,
+        "hasRange": true,
+        "estListingPrice": 165,
+        "updatedOn": "18-Aug 14:56"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "₹550.00 Cr",
+      "peRatio": 22.04,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-19",
+        "close": "2026-08-21",
+        "allotment": "2026-08-24",
+        "listing": "2026-08-26"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/gaja-alternative-asset-management-ipo/1828/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 2.5,
+        "stars": "⭐⭐",
+        "verdict": "⏳ WAIT & WATCH (NASCENT)",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 465,
+        "strategy": "Quotes still nascent. Avoid premature conclusions; wait for official opening.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-29% from peak 4.4%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 3.1,
+          "highPercent": 4.4
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2080,
+      "name": "Horizon Industrial Parks",
+      "category": "Mainboard",
+      "sector": "Real Estate related services",
+      "status": "Open",
+      "priceBand": {
+        "price": 60,
+        "lotSize": 250,
+        "minInvestment": 15000
+      },
+      "gmp": {
+        "amount": 1.25,
+        "percent": 2.08,
+        "lowGmp": 1.25,
+        "highGmp": 4.5,
+        "hasRange": true,
+        "estListingPrice": 61.25,
+        "updatedOn": "18-Aug 15:02"
+      },
+      "subscription": {
+        "total": 0.2,
+        "raw": "0.2x"
+      },
+      "issueSize": "₹2600.04 Cr",
+      "peRatio": 72.29,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-17",
+        "close": "2026-08-19",
+        "allotment": "2026-08-20",
+        "listing": "2026-08-24"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/horizon-industrial-parks-ipo/2080/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 1.5,
+        "stars": "⭐",
+        "verdict": "❌ AVOID (WEAK INTEREST)",
+        "riskLevel": "High",
+        "expectedProfitPerLot": 313,
+        "strategy": "Negligible buyer interest in grey market. Skip.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-72% from peak 7.5%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 2.1,
+          "highPercent": 7.5
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 1997,
+      "name": "Skytech Infinite Platform",
+      "category": "SME",
+      "sector": "Industrial Products",
+      "status": "Closing Today",
+      "priceBand": {
+        "price": 77,
+        "lotSize": 1600,
+        "minInvestment": 123200
+      },
+      "gmp": {
+        "amount": 1,
+        "percent": 1.3,
+        "lowGmp": 1,
+        "highGmp": 13,
+        "hasRange": true,
+        "estListingPrice": 78,
+        "updatedOn": "18-Aug 14:59"
+      },
+      "subscription": {
+        "total": 1.85,
+        "raw": "1.85x"
+      },
+      "issueSize": "₹22.68 Cr",
+      "peRatio": null,
+      "hasAnchor": false,
+      "dates": {
+        "open": "2026-08-14",
+        "close": "2026-08-18",
+        "allotment": "2026-08-19",
+        "listing": "2026-08-21"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/skytech-infinite-platform-ipo/1997/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 2,
+        "stars": "⭐⭐",
+        "verdict": "⚠️ CAUTION (GMP COOLING DOWN)",
+        "riskLevel": "Very High",
+        "expectedProfitPerLot": 1600,
+        "strategy": "Grey market demand is cooling down (Cooling down (-92% from peak 16.9%)). STT and listing volatility pose loss risk. Skip or place low-exposure bids.",
+        "institutionalBacking": "Standard",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-92% from peak 16.9%)",
+          "isDroppingNearClose": true,
+          "isSurgingAtClose": false,
+          "lowPercent": 1.3,
+          "highPercent": 16.9
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2131,
+      "name": "Sham Foam",
+      "category": "SME",
+      "sector": "General",
+      "status": "Closed",
+      "priceBand": {
+        "price": 130,
+        "lotSize": 1000,
+        "minInvestment": 130000
+      },
+      "gmp": {
+        "amount": 1.5,
+        "percent": 1.15,
+        "lowGmp": 1.5,
+        "highGmp": 9,
+        "hasRange": true,
+        "estListingPrice": 131.5,
+        "updatedOn": "18-Aug 9:28"
+      },
+      "subscription": {
+        "total": 2.4,
+        "raw": "2.4x"
+      },
+      "issueSize": "₹40.48 Cr",
+      "peRatio": 12.58,
+      "hasAnchor": false,
+      "dates": {
+        "open": "2026-08-11",
+        "close": "2026-08-13",
+        "allotment": "2026-08-14",
+        "listing": "2026-08-18"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/sham-foam-ipo/2131/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🛡️ DISCOUNT LISTING RISK",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 1500,
+        "strategy": "Bidding closed. Final transition was: Cooling down (-83% from peak 6.9%).",
+        "institutionalBacking": "Standard",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-83% from peak 6.9%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 1.2,
+          "highPercent": 6.9
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2299,
+      "name": "Q&T Foods",
+      "category": "SME",
+      "sector": "Packaged Foods",
+      "status": "Closed",
+      "priceBand": {
+        "price": 115,
+        "lotSize": 1200,
+        "minInvestment": 138000
+      },
+      "gmp": {
+        "amount": 1,
+        "percent": 0.87,
+        "lowGmp": 1,
+        "highGmp": 21,
+        "hasRange": true,
+        "estListingPrice": 116,
+        "updatedOn": "18-Aug 14:53"
+      },
+      "subscription": {
+        "total": 1.42,
+        "raw": "1.42x"
+      },
+      "issueSize": "₹26.25 Cr",
+      "peRatio": 10.61,
+      "hasAnchor": false,
+      "dates": {
+        "open": "2026-08-12",
+        "close": "2026-08-14",
+        "allotment": "2026-08-17",
+        "listing": "2026-08-19"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/qt-foods-ipo/2299/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🛡️ DISCOUNT LISTING RISK",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 1200,
+        "strategy": "Bidding closed. Final transition was: Cooling down (-95% from peak 18.3%).",
+        "institutionalBacking": "Standard",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-95% from peak 18.3%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 0.9,
+          "highPercent": 18.3
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2013,
+      "name": "Kwick Forensic Solutions",
+      "category": "SME",
+      "sector": "General",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": null,
+        "lotSize": null,
+        "minInvestment": null
+      },
+      "gmp": {
+        "amount": 0,
+        "percent": 0,
+        "lowGmp": 0,
+        "highGmp": 0,
+        "hasRange": true,
+        "estListingPrice": null,
+        "updatedOn": "18-Aug 13:00"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "-",
+      "peRatio": null,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-27",
+        "close": "2026-08-31",
+        "allotment": "2026-09-01",
+        "listing": "2026-09-03"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/kwick-forensic-solutions-ipo/2013/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 2.5,
+        "stars": "⭐⭐",
+        "verdict": "⏳ WAIT & WATCH (NASCENT)",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 0,
+        "strategy": "Quotes still nascent. Avoid premature conclusions; wait for official opening.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "STABLE",
+          "trendIcon": "➡️",
+          "trendLabel": "No grey market activity",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 0,
+          "highPercent": 0
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2037,
+      "name": "Madhur Knit",
+      "category": "SME",
+      "sector": "Other Textile Products",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": 100,
+        "lotSize": 1200,
+        "minInvestment": 120000
+      },
+      "gmp": {
+        "amount": 0,
+        "percent": 0,
+        "lowGmp": 0,
+        "highGmp": 0,
+        "hasRange": true,
+        "estListingPrice": null,
+        "updatedOn": "18-Aug 14:54"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "₹27.00 Cr",
+      "peRatio": 12.15,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-24",
+        "close": "2026-08-27",
+        "allotment": "2026-08-28",
+        "listing": "2026-09-01"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/madhur-knit-ipo/2037/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 2.5,
+        "stars": "⭐⭐",
+        "verdict": "⏳ WAIT & WATCH (NASCENT)",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 0,
+        "strategy": "Quotes still nascent. Avoid premature conclusions; wait for official opening.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "STABLE",
+          "trendIcon": "➡️",
+          "trendLabel": "No grey market activity",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 0,
+          "highPercent": 0
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 1824,
+      "name": "ABH Healthcare",
+      "category": "SME",
+      "sector": "Pharmaceuticals",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": 102,
+        "lotSize": 1200,
+        "minInvestment": 122400
+      },
+      "gmp": {
+        "amount": 0,
+        "percent": 0,
+        "lowGmp": 0,
+        "highGmp": 0,
+        "hasRange": true,
+        "estListingPrice": null,
+        "updatedOn": "18-Aug 15:00"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "₹34.98 Cr",
+      "peRatio": 14.47,
+      "hasAnchor": false,
+      "dates": {
+        "open": "2026-08-24",
+        "close": "2026-08-26",
+        "allotment": "2026-08-27",
+        "listing": "2026-08-31"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/abh-healthcare-ipo/1824/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 2.5,
+        "stars": "⭐⭐",
+        "verdict": "⏳ WAIT & WATCH (NASCENT)",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 0,
+        "strategy": "Quotes still nascent. Avoid premature conclusions; wait for official opening.",
+        "institutionalBacking": "Standard",
+        "transition": {
+          "trendDirection": "STABLE",
+          "trendIcon": "➡️",
+          "trendLabel": "No grey market activity",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 0,
+          "highPercent": 0
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2098,
+      "name": "Dhanwel Hybrid Seeds",
+      "category": "SME",
+      "sector": "Other Agricultural Products",
+      "status": "Upcoming",
+      "priceBand": {
+        "price": 99,
+        "lotSize": 1200,
+        "minInvestment": 118800
+      },
+      "gmp": {
+        "amount": 0,
+        "percent": 0,
+        "lowGmp": 0,
+        "highGmp": 0,
+        "hasRange": true,
+        "estListingPrice": null,
+        "updatedOn": "18-Aug 14:58"
+      },
+      "subscription": {
+        "total": null,
+        "raw": "-"
+      },
+      "issueSize": "₹26.73 Cr",
+      "peRatio": 10.37,
+      "hasAnchor": false,
+      "dates": {
+        "open": "2026-08-19",
+        "close": "2026-08-21",
+        "allotment": "2026-08-24",
+        "listing": "2026-08-26"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/dhanwel-hybrid-seeds-ipo/2098/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 2.5,
+        "stars": "⭐⭐",
+        "verdict": "⏳ WAIT & WATCH (NASCENT)",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 0,
+        "strategy": "Quotes still nascent. Avoid premature conclusions; wait for official opening.",
+        "institutionalBacking": "Standard",
+        "transition": {
+          "trendDirection": "STABLE",
+          "trendIcon": "➡️",
+          "trendLabel": "No grey market activity",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 0,
+          "highPercent": 0
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 1992,
+      "name": "Fascinate Textiles",
+      "category": "SME",
+      "sector": "Other Textile Products",
+      "status": "Open",
+      "priceBand": {
+        "price": 151,
+        "lotSize": 800,
+        "minInvestment": 120800
+      },
+      "gmp": {
+        "amount": 0,
+        "percent": 0,
+        "lowGmp": 0,
+        "highGmp": 0,
+        "hasRange": true,
+        "estListingPrice": null,
+        "updatedOn": "18-Aug 15:01"
+      },
+      "subscription": {
+        "total": 0.92,
+        "raw": "0.92x"
+      },
+      "issueSize": "₹64.83 Cr",
+      "peRatio": 10.33,
+      "hasAnchor": false,
+      "dates": {
+        "open": "2026-08-11",
+        "close": "2026-08-19",
+        "allotment": "2026-08-20",
+        "listing": "2026-08-24"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/fascinate-textiles-ipo/1992/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 1.5,
+        "stars": "⭐",
+        "verdict": "❌ AVOID (WEAK INTEREST)",
+        "riskLevel": "High",
+        "expectedProfitPerLot": 0,
+        "strategy": "Negligible buyer interest in grey market. Skip.",
+        "institutionalBacking": "Standard",
+        "transition": {
+          "trendDirection": "STABLE",
+          "trendIcon": "➡️",
+          "trendLabel": "No grey market activity",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 0,
+          "highPercent": 0
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2046,
+      "name": "ENS Enterprises",
+      "category": "SME",
+      "sector": "Software Products",
+      "status": "Closing Today",
+      "priceBand": {
+        "price": 92,
+        "lotSize": 1200,
+        "minInvestment": 110400
+      },
+      "gmp": {
+        "amount": 0,
+        "percent": 0,
+        "lowGmp": 0,
+        "highGmp": 0,
+        "hasRange": true,
+        "estListingPrice": null,
+        "updatedOn": "18-Aug 14:53"
+      },
+      "subscription": {
+        "total": 8.41,
+        "raw": "8.41x"
+      },
+      "issueSize": "₹33.14 Cr",
+      "peRatio": 10.95,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-14",
+        "close": "2026-08-18",
+        "allotment": "2026-08-19",
+        "listing": "2026-08-21"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/ens-enterprises-ipo/2046/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 1,
+        "stars": "⭐",
+        "verdict": "❌ AVOID (DISCOUNT RISK)",
+        "riskLevel": "Extreme",
+        "expectedProfitPerLot": 0,
+        "strategy": "Flat or negative grey market premium. High probability of listing at discount. Protect capital and skip.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "STABLE",
+          "trendIcon": "➡️",
+          "trendLabel": "No grey market activity",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 0,
+          "highPercent": 0
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2275,
+      "name": "Pramodini Medicare",
+      "category": "SME",
+      "sector": "Healthcare Service Provider",
+      "status": "Closed",
+      "priceBand": {
+        "price": 118,
+        "lotSize": 1200,
+        "minInvestment": 141600
+      },
+      "gmp": {
+        "amount": 0,
+        "percent": 0,
+        "lowGmp": 0,
+        "highGmp": 0,
+        "hasRange": true,
+        "estListingPrice": null,
+        "updatedOn": "18-Aug 14:58"
+      },
+      "subscription": {
+        "total": 3.87,
+        "raw": "3.87x"
+      },
+      "issueSize": "₹69.04 Cr",
+      "peRatio": 11.34,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-12",
+        "close": "2026-08-14",
+        "allotment": "2026-08-17",
+        "listing": "2026-08-19"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/pramodini-medicare-ipo/2275/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🛡️ DISCOUNT LISTING RISK",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 0,
+        "strategy": "Bidding closed. Final transition was: No grey market activity.",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "STABLE",
+          "trendIcon": "➡️",
+          "trendLabel": "No grey market activity",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 0,
+          "highPercent": 0
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    },
+    {
+      "id": 2012,
+      "name": "Optimystix Entertainment",
+      "category": "SME",
+      "sector": "General",
+      "status": "Closed",
+      "priceBand": {
+        "price": 175,
+        "lotSize": 800,
+        "minInvestment": 140000
+      },
+      "gmp": {
+        "amount": 0,
+        "percent": 0,
+        "lowGmp": 0,
+        "highGmp": 5,
+        "hasRange": true,
+        "estListingPrice": null,
+        "updatedOn": "14-Aug 9:35"
+      },
+      "subscription": {
+        "total": 2.05,
+        "raw": "2.05x"
+      },
+      "issueSize": "₹108.50 Cr",
+      "peRatio": 13.3,
+      "hasAnchor": true,
+      "dates": {
+        "open": "2026-08-07",
+        "close": "2026-08-11",
+        "allotment": "2026-08-12",
+        "listing": "2026-08-14"
+      },
+      "detailUrl": "https://www.investorgain.com/gmp/optimystix-entertainment-ipo/2012/",
+      "rawRating": "&#128293;",
+      "analysis": {
+        "rating": 3,
+        "stars": "⭐⭐⭐",
+        "verdict": "🛡️ DISCOUNT LISTING RISK",
+        "riskLevel": "Moderate",
+        "expectedProfitPerLot": 0,
+        "strategy": "Bidding closed. Final transition was: Cooling down (-100% from peak 2.9%).",
+        "institutionalBacking": "Strong (Anchor Investors Onboard)",
+        "transition": {
+          "trendDirection": "COOLING_DOWN",
+          "trendIcon": "📉",
+          "trendLabel": "Cooling down (-100% from peak 2.9%)",
+          "isDroppingNearClose": false,
+          "isSurgingAtClose": false,
+          "lowPercent": 0,
+          "highPercent": 2.9
+        },
+        "isStrongApply": false,
+        "isBlockbuster": false,
+        "isApply": false
+      }
+    }
+  ]
+}

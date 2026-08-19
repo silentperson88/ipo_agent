@@ -1,0 +1,29 @@
+{
+  "name": "ipo-intelligence-agent",
+  "version": "1.0.0",
+  "description": "Automated IPO Intelligence Agent - Live GMP tracking, AI analysis, 7-day rolling JSON cache, and WhatsApp dispatch",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "ui": "node dashboard/server.js",
+    "dashboard": "node dashboard/server.js",
+    "schedule": "node services/scheduler.js",
+    "whatsapp:login": "node scripts/loginWhatsapp.js",
+    "whatsapp:test": "node scripts/testBroadcast.js",
+    "test": "node index.js"
+  },
+  "keywords": [
+    "ipo",
+    "gmp",
+    "whatsapp",
+    "investing"
+  ],
+  "author": "Run4Dream",
+  "license": "ISC",
+  "dependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc14",
+    "dotenv": "^17.4.2",
+    "pino": "^10.3.1",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
