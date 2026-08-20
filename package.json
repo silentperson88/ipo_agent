@@ -1,0 +1,42 @@
+{
+  "name": "ipo-intelligence-agent",
+  "version": "1.0.0",
+  "description": "Automated IPO Intelligence Agent - Live GMP tracking, AI analysis, 7-day rolling JSON cache, and WhatsApp dispatch",
+  "main": "index.js",
+  "scripts": {
+    "dashboard": "node dashboard/server.js",
+    "dashboard:dev": "nodemon dashboard/server.js",
+    "schedule": "node services/scheduler.js",
+    "sync": "node index.js",
+    "whatsapp:login": "node scripts/loginWhatsapp.js",
+    "whatsapp:reset": "node scripts/loginWhatsapp.js --reset",
+    "whatsapp:test": "node scripts/testBroadcast.js",
+    "send:test": "node scripts/testBroadcast.js",
+    "send:samples": "node scripts/sendAllSamples.js",
+    "send:all": "node scripts/sendAllPossibleMessages.js",
+    "prod:start": "pm2 start ecosystem.config.js",
+    "prod:stop": "pm2 stop ecosystem.config.js",
+    "prod:restart": "pm2 restart ecosystem.config.js",
+    "prod:logs": "pm2 logs",
+    "prod:status": "pm2 status",
+    "start": "node dashboard/server.js",
+    "dev": "nodemon dashboard/server.js",
+    "test": "node index.js"
+  },
+  "keywords": [
+    "ipo",
+    "gmp",
+    "whatsapp",
+    "investing"
+  ],
+  "author": "Run4Dream",
+  "license": "ISC",
+  "dependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc14",
+    "dotenv": "^17.4.2",
+    "mongoose": "^8.2.0",
+    "node-cron": "^4.6.0",
+    "pino": "^10.3.1",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
