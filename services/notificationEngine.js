@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
 const config = require('../config');
+const { NotificationState, connectDb } = require('./dbService');
 const { 
   formatGmpShiftAlert, 
   formatSubscriptionMilestone, 
@@ -8,24 +8,6 @@ const {
   formatEveningScorecard, 
   formatUpcomingAnnouncement 
 } = require('../templates/eventMessages');
-
-// Schema to track sent notifications per IPO
-const NotificationStateSchema = new mongoose.Schema({
-  ipoId: { type: Number, required: true, unique: true, index: true },
-  name: { type: String, required: true },
-  lastNotifiedGmpPercent: { type: Number, default: 0 },
-  subMilestonesSent: { type: [Number], default: [] }, // [30, 50, 100]
-  upcomingNotified: { type: Boolean, default: false },
-  openNotifiedDate: { type: String, default: '' },
-  finalAlertSentDate: { type: String, default: '' },
-  closedRecapSentDate: { type: String, default: '' },
-  listingNotifiedDate: { type: String, default: '' },
-  instantAlertsSentToday: { type: Number, default: 0 },
-  lastAlertDate: { type: String, default: '' },
-  updatedAt: { type: Date, default: Date.now }
-});
-
-const NotificationState = mongoose.models.NotificationState || mongoose.model('NotificationState', NotificationStateSchema);
 
 function checkDateReset(state, todayStr) {
   if (state.lastAlertDate !== todayStr) {
@@ -38,6 +20,9 @@ function checkDateReset(state, todayStr) {
  * Evaluates live IPO list against Percentage-Based Notification Rules
  */
 async function processEventDrivenAlerts(analyzedIpos, whatsappService = null) {
+  await connectDb();
+  if (!NotificationState) return { instantAlertsCount: 0, alerts: [], postCloseMovements: [] };
+
   const todayStr = new Date().toISOString().split('T')[0];
   const generatedAlerts = [];
   const postCloseMovements = [];
@@ -143,6 +128,9 @@ async function generateMorningKickoffDigest(analyzedIpos) {
  * 02:00 PM Final Action Alert (Closing Day)
  */
 async function generateFinalClosingAlerts(analyzedIpos) {
+  await connectDb();
+  if (!NotificationState) return [];
+
   const closingToday = analyzedIpos.filter(i => i.status === 'Closing Today');
   const todayStr = new Date().toISOString().split('T')[0];
   const alerts = [];
@@ -171,34 +159,90 @@ async function generateEveningScorecardDigest(analyzedIpos, postCloseMovements =
 }
 
 /**
- * 09:00 PM Upcoming Pipeline Pulse (Sent Once)
+ * Helper to calculate calendar days remaining until bidding opens
+ */
+function getDaysUntilBidding(ipo) {
+  const rawDate = ipo.dates?.rawOpen || ipo.dates?.open;
+  if (!rawDate) return null;
+
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  let targetDate = null;
+  if (rawDate.includes('-') && rawDate.length === 10) {
+    targetDate = new Date(rawDate);
+  } else {
+    // Parse e.g. '20-Aug'
+    const parts = rawDate.split('-');
+    const day = parseInt(parts[0]);
+    const monthStr = parts[1];
+    const months = { 'jan': 0, 'feb': 1, 'mar': 2, 'apr': 3, 'may': 4, 'jun': 5, 'jul': 6, 'aug': 7, 'sep': 8, 'oct': 9, 'nov': 10, 'dec': 11 };
+    const month = monthStr ? months[monthStr.toLowerCase().slice(0, 3)] : undefined;
+    if (!isNaN(day) && month !== undefined) {
+      targetDate = new Date(now.getFullYear(), month, day);
+      if (targetDate < today && today.getMonth() === 11 && month === 0) {
+        targetDate.setFullYear(now.getFullYear() + 1);
+      }
+    }
+  }
+
+  if (!targetDate || isNaN(targetDate.getTime())) return null;
+  const targetMidnight = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
+  const diffMs = targetMidnight.getTime() - today.getTime();
+  return Math.round(diffMs / (1000 * 60 * 60 * 24));
+}
+
+/**
+ * 09:00 PM Upcoming Pipeline Pulse
+ * RULE: Informs ONLY 3 days before (T-3) and 1 day before (T-1) bidding starts!
  */
 async function generateUpcomingPipelineDigest(analyzedIpos) {
+  await connectDb();
+  if (!NotificationState) return null;
+
+  const todayStr = new Date().toISOString().split('T')[0];
   const upcoming = analyzedIpos.filter(i => i.status === 'Upcoming');
-  const newUpcoming = [];
+  const eligibleUpcoming = [];
 
   for (const ipo of upcoming) {
+    const daysUntil = getDaysUntilBidding(ipo);
+    if (daysUntil === null) continue;
+
     const ipoId = ipo.id || ipo.name;
     let state = await NotificationState.findOne({ ipoId });
-    if (!state || !state.upcomingNotified) {
-      newUpcoming.push(ipo);
-      if (!state) {
-        state = new NotificationState({ ipoId, name: ipo.name, upcomingNotified: true });
-      } else {
-        state.upcomingNotified = true;
-      }
+    if (!state) {
+      state = new NotificationState({ ipoId, name: ipo.name });
+    }
+
+    // 1. T-3 Alert (3 Days Before Opening: e.g. 17-Aug for 20-Aug Open)
+    if (daysUntil === 3 && state.upcomingNotifiedT3Date !== todayStr) {
+      ipo.countdownBadge = '⏳ *OPENS IN 3 DAYS (Prepare Funds)*';
+      ipo.daysUntilOpen = 3;
+      eligibleUpcoming.push(ipo);
+      state.upcomingNotifiedT3Date = todayStr;
+      state.updatedAt = new Date();
+      await state.save();
+    } 
+    // 2. T-1 Alert (1 Day Before Opening: e.g. 19-Aug for 20-Aug Open)
+    else if (daysUntil === 1 && state.upcomingNotifiedT1Date !== todayStr) {
+      ipo.countdownBadge = '🚨 *OPENS TOMORROW (Final Checklist)*';
+      ipo.daysUntilOpen = 1;
+      eligibleUpcoming.push(ipo);
+      state.upcomingNotifiedT1Date = todayStr;
+      state.updatedAt = new Date();
       await state.save();
     }
   }
 
-  if (newUpcoming.length > 0) {
-    return formatUpcomingAnnouncement(newUpcoming);
+  if (eligibleUpcoming.length > 0) {
+    return formatUpcomingAnnouncement(eligibleUpcoming);
   }
   return null;
 }
 
 module.exports = {
   NotificationState,
+  getDaysUntilBidding,
   processEventDrivenAlerts,
   generateMorningKickoffDigest,
   generateFinalClosingAlerts,

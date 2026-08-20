@@ -35,10 +35,25 @@ class WhatsAppBotService {
     this.availableGroups = [];
   }
 
-  async initialize() {
+  clearSession() {
+    try {
+      if (fs.existsSync(SESSION_DIR)) {
+        fs.rmSync(SESSION_DIR, { recursive: true, force: true });
+        console.log('[WhatsApp Bot] 🗑️ Cleared previous WhatsApp session directory.');
+      }
+    } catch (e) {
+      console.warn('[WhatsApp Bot] Notice while clearing session:', e.message);
+    }
+  }
+
+  async initialize(forceReset = false) {
     if (!makeWASocket) {
       console.warn('[WhatsApp Bot] Baileys package not yet ready.');
       return;
+    }
+
+    if (forceReset) {
+      this.clearSession();
     }
 
     if (!fs.existsSync(SESSION_DIR)) {
@@ -48,7 +63,7 @@ class WhatsAppBotService {
     const { state, saveCreds } = await useMultiFileAuthState(SESSION_DIR);
     const logger = pino ? pino({ level: 'silent' }) : undefined;
 
-    console.log('[WhatsApp Bot] Initializing WhatsApp Connection...');
+    console.log('[WhatsApp Bot] Initializing WhatsApp Connection Socket...');
 
     this.sock = makeWASocket({
       auth: state,
@@ -75,9 +90,15 @@ class WhatsAppBotService {
       if (connection === 'close') {
         this.isConnected = false;
         const statusCode = lastDisconnect?.error?.output?.statusCode;
-        const shouldReconnect = statusCode !== DisconnectReason.loggedOut;
-        console.log(`[WhatsApp Bot] Connection closed (Status: ${statusCode}). Reconnecting: ${shouldReconnect}`);
-        if (shouldReconnect) {
+        const isLoggedOut = statusCode === DisconnectReason.loggedOut || statusCode === 401 || statusCode === 403;
+
+        if (isLoggedOut) {
+          console.log('\n[WhatsApp Bot] ⚠️ Device was logged out or session expired (Status: ' + statusCode + ').');
+          console.log('[WhatsApp Bot] 🔄 Clearing expired session and generating fresh QR code in 2s...\n');
+          this.clearSession();
+          setTimeout(() => this.initialize(), 2000);
+        } else {
+          console.log(`[WhatsApp Bot] Connection closed (Status: ${statusCode || 'socket drop'}). Reconnecting in 5s...`);
           setTimeout(() => this.initialize(), 5000);
         }
       } else if (connection === 'open') {

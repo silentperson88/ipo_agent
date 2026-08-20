@@ -1,8 +1,15 @@
 const botService = require('../services/whatsappBot');
 
-console.log('======================================================');
-console.log('🤖 IPO AGENT AI — WHATSAPP LOGIN & PAIRING TERMINAL');
-console.log('======================================================');
-console.log('Initializing connection to WhatsApp...');
+const isReset = process.argv.includes('--reset') || process.argv.includes('-r');
 
-botService.initialize();
+console.log('======================================================');
+console.log('🤖 RUN4DREAM — WHATSAPP DEVICE LINKING TERMINAL');
+console.log('======================================================');
+
+if (isReset) {
+  console.log('🔄 Reset requested. Purging previous session keys...');
+}
+
+console.log('Initializing connection to WhatsApp...\n');
+
+botService.initialize(isReset);

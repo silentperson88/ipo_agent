@@ -1,0 +1,19 @@
+{
+  "watch": [
+    "index.js",
+    "config",
+    "dashboard/server.js",
+    "services",
+    "templates"
+  ],
+  "ext": "js,json",
+  "ignore": [
+    "data/**",
+    "data/whatsapp_session/**",
+    "data/logs/**",
+    "public/**",
+    "node_modules/**",
+    "*.log"
+  ],
+  "delay": 1500
+}

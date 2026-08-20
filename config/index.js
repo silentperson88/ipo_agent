@@ -32,12 +32,6 @@ module.exports = {
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
   },
 
-  // Storage Configurations
-  storage: {
-    dumpsDir: path.join(__dirname, '..', 'data', 'ipo_dumps'),
-    retentionDays: 7
-  },
-
   // Percentage-Based Investment Thresholds
   thresholds: {
     blockbusterPercent: 50,  // >= 50% Blockbuster
@@ -58,10 +52,10 @@ module.exports = {
 
   // Database Configuration (MongoDB)
   mongo: {
-    uri: process.env.MONGO_URI || process.env.DEV_DB_URL || 'mongodb://127.0.0.1:27017/finvibes_ipo',
+    uri: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/finvibes_ipo',
     options: {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000
     }
   }
 };

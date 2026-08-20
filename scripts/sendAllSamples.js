@@ -26,7 +26,19 @@ async function sendUpdatedTableSamples() {
     process.exit(1);
   }
 
-  const targetJid = '120363409446063630@g.us'; // ALPHA IPO AI Announcements
+  if (!botService.availableGroups || botService.availableGroups.length === 0) {
+    await botService.loadCommunityGroups();
+  }
+
+  const config = require('../config');
+  const targetJid = process.env.WHATSAPP_TARGET_GROUP_JID || config.whatsapp?.targetGroupJid || botService.targetGroupJid || (botService.availableGroups.length > 0 ? botService.availableGroups[0].id : null);
+  
+  if (!targetJid) {
+    console.error('❌ No target group found.');
+    process.exit(1);
+  }
+
+  console.log(`\n🎯 Delivering samples to group: ${targetJid}`);
   const dbData = await getLatestIposFromDb();
   const ipos = dbData?.ipos || [];
 

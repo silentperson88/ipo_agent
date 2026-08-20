@@ -107,14 +107,7 @@ async function loadIpoData() {
         data = await res.json();
       }
     } catch (e) {
-      console.warn('API endpoint not reachable, trying static dump...');
-    }
-
-    if (!data) {
-      const res = await fetch('/data/ipo_dumps/latest.json');
-      if (res.ok) {
-        data = await res.json();
-      }
+      console.warn('API endpoint /api/latest error:', e);
     }
 
     if (data && Array.isArray(data.ipos)) {

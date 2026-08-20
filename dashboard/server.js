@@ -1,14 +1,20 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { getLatestSnapshot } = require('../services/fileManager');
-const { runIpoIntelligencePipeline } = require('../index');
-const { getLatestIposFromDb, getIpoGmpHistory } = require('../services/dbService');
+const { getLiveIpos } = require('../services/fetcher');
+const { analyzeAllIpos } = require('../services/aiAnalyzer');
+const { connectDb, syncIposToDb, getLatestIposFromDb, getIpoGmpHistory } = require('../services/dbService');
 const config = require('../config');
 
 const PORT = process.env.PORT || 5050;
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
-const DATA_DIR = path.join(__dirname, '..', 'data', 'ipo_dumps');
+
+async function executeFreshIngestion() {
+  const rawResult = await getLiveIpos();
+  const analyzedIpos = analyzeAllIpos(rawResult.ipos);
+  await syncIposToDb(analyzedIpos);
+  return analyzedIpos;
+}
 
 const MIME_TYPES = {
   '.html': 'text/html',
@@ -34,12 +40,16 @@ const server = http.createServer(async (req, res) => {
 
   const url = req.url.split('?')[0];
 
-  // API: Get Latest IPO Data (Queries MongoDB first, falls back to JSON dump)
+  // API: Get Latest IPO Data (Queries MongoDB directly)
   if (url === '/api/latest' && req.method === 'GET') {
     try {
       let data = await getLatestIposFromDb();
-      if (!data) {
-        data = getLatestSnapshot();
+
+      // If DB is empty on first boot, auto-trigger initial pipeline run
+      if (!data || !data.ipos || data.ipos.length === 0) {
+        console.log('[Server] MongoDB is empty. Triggering initial ingestion pipeline...');
+        await executeFreshIngestion();
+        data = await getLatestIposFromDb();
       }
 
       if (data) {
@@ -48,7 +58,7 @@ const server = http.createServer(async (req, res) => {
         res.end(JSON.stringify(data));
       } else {
         res.writeHead(404, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'No IPO data found. Trigger a refresh.' }));
+        res.end(JSON.stringify({ error: 'No IPO data found in MongoDB. Trigger a refresh.' }));
       }
     } catch (err) {
       res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -75,9 +85,9 @@ const server = http.createServer(async (req, res) => {
   if (url === '/api/refresh' && req.method === 'POST') {
     try {
       console.log('[Server] Manual refresh triggered from UI...');
-      const result = await runIpoIntelligencePipeline();
+      const analyzedIpos = await executeFreshIngestion();
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify(result));
+      res.end(JSON.stringify({ success: true, count: analyzedIpos.length }));
     } catch (err) {
       res.writeHead(500, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: err.message }));
@@ -92,8 +102,6 @@ const server = http.createServer(async (req, res) => {
     filePath = path.join(PUBLIC_DIR, 'index.html');
   } else if (url === '/admin') {
     filePath = path.join(PUBLIC_DIR, 'admin.html');
-  } else if (url.startsWith('/data/ipo_dumps/')) {
-    filePath = path.join(DATA_DIR, url.replace('/data/ipo_dumps/', ''));
   }
 
   fs.stat(filePath, (err, stats) => {
@@ -111,18 +119,32 @@ const server = http.createServer(async (req, res) => {
   });
 });
 
-if (require.main === module) {
-  server.listen(PORT, () => {
-    console.log(`
+function startDashboardServer(port = PORT) {
+  return new Promise((resolve, reject) => {
+    server.listen(port, async (err) => {
+      if (err) return reject(err);
+      console.log(`
 ======================================================
 🚀 RUN4DREAM IPO DASHBOARD SERVER LIVE
 ======================================================
-• 🌐 Customer Public Portal: http://localhost:${PORT}
-• 🛡️ Admin Command Desk:    http://localhost:${PORT}/admin
-• 📊 API Endpoint:           http://localhost:${PORT}/api/latest
+• 🌐 Customer Public Portal: http://localhost:${port}
+• 🛡️ Admin Command Desk:    http://localhost:${port}/admin
+• 📊 API Endpoint:           http://localhost:${port}/api/latest
 ======================================================
 `);
+      await connectDb();
+      resolve(server);
+    });
   });
 }
 
-module.exports = server;
+if (require.main === module) {
+  startDashboardServer(PORT).catch(err => {
+    console.error('[Dashboard] Server failed to start:', err.message);
+  });
+}
+
+module.exports = {
+  server,
+  startDashboardServer
+};

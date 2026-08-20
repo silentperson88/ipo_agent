@@ -20,6 +20,7 @@ if (mongoose) {
 let IpoMaster = null;
 let IpoDailyGmp = null;
 let Subscriber = null;
+let NotificationState = null;
 
 if (mongoose) {
   // 1. Static Permanent Master Data
@@ -38,6 +39,11 @@ if (mongoose) {
     businessSummary: String,
     objectsOfIssue: String,
     prosAndCons: [String],
+    registrar: {
+      name: String,
+      url: String,
+      bseUrl: String
+    },
     createdAt: { type: Date, default: Date.now, index: true },
     updatedAt: { type: Date, default: Date.now }
   });
@@ -101,29 +107,70 @@ if (mongoose) {
 
   SubscriberSchema.index({ status: 1, expiresAt: 1 });
 
+  // 4. Notification & Rate Limiting State Tracker
+  const NotificationStateSchema = new mongoose.Schema({
+    ipoId: { type: Number, required: true, unique: true, index: true },
+    name: { type: String, required: true },
+    lastNotifiedGmpPercent: { type: Number, default: 0 },
+    subMilestonesSent: { type: [Number], default: [] }, // [30, 50, 100]
+    upcomingNotified: { type: Boolean, default: false },
+    upcomingNotifiedT3Date: { type: String, default: '' },
+    upcomingNotifiedT1Date: { type: String, default: '' },
+    openNotifiedDate: { type: String, default: '' },
+    finalAlertSentDate: { type: String, default: '' },
+    closedRecapSentDate: { type: String, default: '' },
+    listingNotifiedDate: { type: String, default: '' },
+    instantAlertsSentToday: { type: Number, default: 0 },
+    lastAlertDate: { type: String, default: '' },
+    updatedAt: { type: Date, default: Date.now }
+  });
+
   IpoMaster = mongoose.models.IpoMaster || mongoose.model('IpoMaster', IpoMasterSchema);
   IpoDailyGmp = mongoose.models.IpoDailyGmp || mongoose.model('IpoDailyGmp', IpoDailyGmpSchema);
   Subscriber = mongoose.models.Subscriber || mongoose.model('Subscriber', SubscriberSchema);
+  NotificationState = mongoose.models.NotificationState || mongoose.model('NotificationState', NotificationStateSchema);
 }
 
 let isConnected = false;
 
 async function connectDb() {
   if (!mongoose) {
-    console.log('[Database] Operating in file-based JSON cache mode.');
-    return;
+    console.error('[Database] ❌ Mongoose is not available in environment. Please install mongoose.');
+    return false;
   }
-  if (isConnected) return;
+  if (isConnected && mongoose.connection.readyState === 1) {
+    return true;
+  }
+
+  const mongoUri = process.env.MONGO_URI || config.mongo?.uri || 'mongodb://127.0.0.1:27017/finvibes_ipo';
+
   try {
-    const mongoUri = process.env.MONGO_URI || process.env.DEV_DB_URL || config.mongo.uri || 'mongodb://127.0.0.1:27017/finvibes_ipo';
+    console.log(`[Database] 🔄 Connecting to MongoDB at: ${mongoUri}...`);
     await mongoose.connect(mongoUri, {
       maxPoolSize: 10,
-      serverSelectionTimeoutMS: 3000
+      serverSelectionTimeoutMS: 4000
     });
     isConnected = true;
-    console.log(`[Database] Connected to MongoDB at ${mongoUri}`);
+
+    const dbName = mongoose.connection.name || 'finvibes_ipo';
+    const host = mongoose.connection.host || 'localhost';
+    const port = mongoose.connection.port || 27017;
+
+    let masterCount = 0;
+    let gmpCount = 0;
+    try {
+      if (IpoMaster) masterCount = await IpoMaster.countDocuments();
+      if (IpoDailyGmp) gmpCount = await IpoDailyGmp.countDocuments();
+    } catch (e) {}
+
+    console.log(`[Database] ✅ Connected to MongoDB successfully!`);
+    console.log(`[Database] 📦 Database: "${dbName}" | Host: ${host}:${port} | Master IPOs: ${masterCount} | Daily GMP Records: ${gmpCount}`);
+    return true;
   } catch (err) {
-    console.warn('[Database] MongoDB connection notice:', err.message);
+    isConnected = false;
+    console.error(`[Database] ❌ MongoDB Connection FAILED: ${err.message}`);
+    console.error(`[Database] 💡 Check: Is MongoDB daemon running locally on port 27017 or is MONGO_URI reachable?`);
+    return false;
   }
 }
 
@@ -132,10 +179,10 @@ async function connectDb() {
  */
 async function syncIposToDb(analyzedIpos) {
   if (!mongoose) return;
-  if (!isConnected) {
+  if (!isConnected || mongoose.connection.readyState !== 1) {
     await connectDb();
   }
-  if (!isConnected) return;
+  if (!isConnected || mongoose.connection.readyState !== 1) return;
 
   const todayStr = new Date().toISOString().split('T')[0];
   const startTime = Date.now();
@@ -157,15 +204,18 @@ async function syncIposToDb(analyzedIpos) {
               name: ipo.name,
               category: ipo.category,
               sector: ipo.sector,
-              price: ipo.priceBand?.price,
-              lotSize: ipo.priceBand?.lotSize,
-              minInvestment: ipo.priceBand?.minInvestment,
               issueSize: ipo.issueSize,
               peRatio: ipo.peRatio,
               detailUrl: ipo.detailUrl,
               createdAt: new Date()
             },
-            $set: { updatedAt: new Date() }
+            $set: { 
+              updatedAt: new Date(),
+              price: ipo.priceBand?.price,
+              lotSize: ipo.priceBand?.lotSize,
+              minInvestment: ipo.priceBand?.minInvestment,
+              registrar: ipo.registrar || null
+            }
           },
           upsert: true
         }
@@ -218,16 +268,27 @@ async function syncIposToDb(analyzedIpos) {
 
 /**
  * Query live IPOs directly from MongoDB (sub-millisecond lean query)
+ * Automatically falls back to the most recent date available in DB if today's sync hasn't run yet.
  */
 async function getLatestIposFromDb() {
-  if (!isConnected) await connectDb();
-  if (!isConnected) return null;
+  if (!isConnected || mongoose.connection.readyState !== 1) await connectDb();
+  if (!isConnected || mongoose.connection.readyState !== 1) return null;
 
   const todayStr = new Date().toISOString().split('T')[0];
 
   try {
+    // 1. Check if today's data exists; if not, query latest available date
+    let queryDate = todayStr;
+    const hasToday = await IpoDailyGmp.exists({ date: todayStr });
+    if (!hasToday) {
+      const latestRecord = await IpoDailyGmp.findOne({}).sort({ date: -1 }).select('date').lean();
+      if (latestRecord) {
+        queryDate = latestRecord.date;
+      }
+    }
+
     const [gmps, masters] = await Promise.all([
-      IpoDailyGmp.find({ date: todayStr }).lean(),
+      IpoDailyGmp.find({ date: queryDate }).lean(),
       IpoMaster.find({}).lean()
     ]);
 
@@ -265,6 +326,7 @@ async function getLatestIposFromDb() {
         peRatio: m.peRatio,
         dates: g.dates,
         detailUrl: m.detailUrl,
+        registrar: m.registrar || null,
         analysis: {
           rating: g.rating,
           stars: '⭐'.repeat(Math.floor(g.rating || 3)),
@@ -287,6 +349,7 @@ async function getLatestIposFromDb() {
     return {
       scrapedAt: new Date().toISOString(),
       source: 'MongoDB',
+      targetDate: queryDate,
       totalCount: ipos.length,
       openCount: ipos.filter(i => i.status === 'Open' || i.status === 'Closing Today').length,
       ipos
@@ -301,8 +364,8 @@ async function getLatestIposFromDb() {
  * Get Time-Series GMP history for a specific IPO
  */
 async function getIpoGmpHistory(ipoId, limitDays = 30) {
-  if (!isConnected) await connectDb();
-  if (!isConnected) return [];
+  if (!isConnected || mongoose.connection.readyState !== 1) await connectDb();
+  if (!isConnected || mongoose.connection.readyState !== 1) return [];
 
   try {
     return await IpoDailyGmp.find({ ipoId })
@@ -316,11 +379,29 @@ async function getIpoGmpHistory(ipoId, limitDays = 30) {
 }
 
 /**
+ * Fetch IPOs by specific status (e.g. 'Open', 'Closing Today', 'Upcoming')
+ */
+async function getIposByStatus(status) {
+  const latest = await getLatestIposFromDb();
+  if (!latest || !latest.ipos) return [];
+  return latest.ipos.filter(i => i.status === status);
+}
+
+/**
+ * Fetch single IPO by ID
+ */
+async function getIpoById(ipoId) {
+  const latest = await getLatestIposFromDb();
+  if (!latest || !latest.ipos) return null;
+  return latest.ipos.find(i => String(i.id) === String(ipoId)) || null;
+}
+
+/**
  * Fetch all active subscribers
  */
 async function getActiveSubscribers() {
-  if (!isConnected) await connectDb();
-  if (!isConnected) return [];
+  if (!isConnected || mongoose.connection.readyState !== 1) await connectDb();
+  if (!isConnected || mongoose.connection.readyState !== 1) return [];
 
   try {
     return await Subscriber.find({
@@ -338,8 +419,12 @@ module.exports = {
   syncIposToDb,
   getLatestIposFromDb,
   getIpoGmpHistory,
+  getIposByStatus,
+  getIpoById,
   getActiveSubscribers,
   IpoMaster,
   IpoDailyGmp,
-  Subscriber
+  Subscriber,
+  NotificationState,
+  mongoose
 };

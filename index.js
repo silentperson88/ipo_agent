@@ -1,65 +1,33 @@
 const { getLiveIpos } = require('./services/fetcher');
 const { analyzeAllIpos } = require('./services/aiAnalyzer');
-const { saveDailySnapshot, getLatestSnapshot } = require('./services/fileManager');
-const { syncIposToDb } = require('./services/dbService');
-const { formatDailyDigest, formatSingleIpoLetter, formatBreakoutAlert } = require('./templates/ipoNewsletter');
+const { syncIposToDb, getLatestIposFromDb, connectDb } = require('./services/dbService');
+const { formatDailyDigest, formatSingleIpoLetter } = require('./templates/ipoNewsletter');
+const { startDashboardServer } = require('./dashboard/server');
+const scheduler = require('./services/scheduler');
 
 /**
- * Main execution pipeline for IPO Intelligence Agent
+ * Pipeline execution function (Fetch -> AI Analyze -> MongoDB Upsert)
  */
 async function runIpoIntelligencePipeline(options = {}) {
-  console.log('\n======================================================');
-  console.log('🚀 RUN4DREAM IPO INTELLIGENCE AGENT — PIPELINE RUN');
-  console.log(`⏰ Time: ${new Date().toLocaleString('en-IN')}`);
-  console.log('======================================================\n');
-
   try {
-    // 1. Fetch live raw data from API endpoints
     const rawResult = await getLiveIpos();
-
-    // 2. Run AI and Rule-based analysis
     const analyzedIpos = analyzeAllIpos(rawResult.ipos);
 
     const fullPayload = {
       scrapedAt: rawResult.scrapedAt,
+      source: 'MongoDB',
       totalCount: rawResult.totalCount,
       openCount: rawResult.openCount,
       closingTodayCount: analyzedIpos.filter(i => i.status === 'Closing Today').length,
       ipos: analyzedIpos
     };
 
-    // 3. Save JSON Snapshot (Rolling 7-day storage)
-    const savedFile = saveDailySnapshot(fullPayload);
-
-    // 4. Sync to MongoDB (Master and Daily GMP records)
+    // Persist directly to MongoDB
     await syncIposToDb(analyzedIpos);
 
-    // 5. Generate formatted WhatsApp preview messages
     const digestMessage = formatDailyDigest(analyzedIpos);
-
-    // Find top pick for single letter preview
     const topPick = analyzedIpos.find(i => i.status === 'Open' || i.status === 'Closing Today') || analyzedIpos[0];
     const singleLetter = topPick ? formatSingleIpoLetter(topPick) : '';
-
-    console.log('\n------------------------------------------------------');
-    console.log('📊 EXECUTION SUMMARY');
-    console.log('------------------------------------------------------');
-    console.log(`• Total IPOs Processed: ${analyzedIpos.length}`);
-    console.log(`• Open / Closing Today: ${fullPayload.openCount}`);
-    console.log(`• High-GMP (>20%):      ${analyzedIpos.filter(i => (i.gmp?.percent || 0) >= 20).length}`);
-    console.log(`• Snapshot saved at:    ${savedFile}`);
-
-    console.log('\n------------------------------------------------------');
-    console.log('📱 WHATSAPP DAILY DIGEST PREVIEW:');
-    console.log('------------------------------------------------------');
-    console.log(digestMessage);
-
-    if (singleLetter) {
-      console.log('\n------------------------------------------------------');
-      console.log('📱 WHATSAPP SINGLE IPO LETTER PREVIEW (Top Pick):');
-      console.log('------------------------------------------------------');
-      console.log(singleLetter);
-    }
 
     return {
       success: true,
@@ -73,14 +41,48 @@ async function runIpoIntelligencePipeline(options = {}) {
   }
 }
 
-// If run directly from terminal
+/**
+ * All-In-One Unified Service Launcher (Dashboard + 24/7 Scheduler + WhatsApp + Live Ingestion)
+ */
+async function startUnifiedService() {
+  console.log('\n======================================================');
+  console.log('🚀 RUN4DREAM IPO INTELLIGENCE AGENT — UNIFIED ENGINE');
+  console.log(`⏰ Time: ${new Date().toLocaleString('en-IN')}`);
+  console.log('======================================================\n');
+
+  try {
+    // 1. Connect to MongoDB
+    await connectDb();
+
+    // 2. Start Web Dashboard HTTP Server (Port 5050)
+    await startDashboardServer(process.env.PORT || 5050);
+
+    // 3. Start 24/7 Autonomous Cron Scheduler & WhatsApp Bot
+    await scheduler.start();
+
+    console.log(`
+======================================================
+✨ UNIFIED IPO INTELLIGENCE SERVICE IS LIVE & RUNNING
+======================================================
+• 🌐 Web Dashboard:       http://localhost:${process.env.PORT || 5050}
+• 📊 API Endpoint:        http://localhost:${process.env.PORT || 5050}/api/latest
+• 📱 WhatsApp Hub:        Autonomous Baileys Socket Active
+• ⏰ Cron Dispatcher:     Asia/Kolkata (08:30 AM, 02:00 PM, 07:00 PM, 09:00 PM + 15m polling)
+• 📦 Database:            MongoDB (Single Source of Truth)
+======================================================
+    `);
+  } catch (err) {
+    console.error('[Unified Service] Startup error:', err.message);
+  }
+}
+
+// If run directly from terminal: start unified engine
 if (require.main === module) {
-  runIpoIntelligencePipeline().then(() => {
-    process.exit(0);
-  });
+  startUnifiedService();
 }
 
 module.exports = {
+  startUnifiedService,
   runIpoIntelligencePipeline,
-  getLatestSnapshot
+  getLatestIposFromDb
 };

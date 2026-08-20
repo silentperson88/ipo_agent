@@ -20,16 +20,27 @@
                  ▼
    [ services/aiAnalyzer.js ] ───────> Percentage-Based Momentum Engine (Apply / Avoid Calls)
                  │
-                 ├──────────────────────────────┬──────────────────────────────┐
-                 ▼                              ▼                              ▼
-     [ services/dbService.js ]      [ services/fileManager.js ]    [ services/scheduler.js ]
-       MongoDB Bulk Sync &             7-Day Rolling JSON              24/7 Intelligent
-       Time-Series Tracking            Snapshot Pointer & Purge        Cron & Polling Engine
-                 │                                                             │
-                 ▼                                                             ▼
-     [ dashboard/server.js ]                                      [ services/whatsappBot.js ]
-       Live Web Matrix UI                                            Autonomous WhatsApp
-     (http://localhost:5050)                                       Community Broadcasting
+                 ▼
+     [ services/dbService.js ] ──────> MongoDB Single Source of Truth (SSOT)
+                                       ├── IpoMaster (Permanent Specs & RTAs)
+                                       ├── IpoDailyGmp (Time-Series & Decisions)
+                                       └── NotificationState (Milestones & Caps)
+                 │
+         ┌───────┴───────────────────────────────────────────┐
+         ▼                                                   ▼
+┌─────────────────────────────────┐         ┌─────────────────────────────────┐
+│   SERVICE 1: WEB DASHBOARD UI   │         │  SERVICE 2: 24/7 CRON SCHEDULER │
+│      [ dashboard/server.js ]    │         │      [ services/scheduler.js ]  │
+│  • Pure Web/API on Port 5050    │         │  • node-cron Engine (Asia/Calcutta)
+│  • Zero WhatsApp dependency     │         │  • Ingests & AI Evaluates Live  │
+│  • Command: npm run dashboard   │         │  • Auto-Dispatches WhatsApp     │
+└─────────────────────────────────┘         │  • Command: npm run schedule    │
+                                            └─────────────────────────────────┘
+                                                             │
+                                                             ▼
+                                                [ services/whatsappBot.js ]
+                                                  Permanent Multi-File Auth
+                                                  (data/whatsapp_session/)
 ```
 
 ---
@@ -38,16 +49,16 @@
 
 | Module / File | Responsibility & Description | Key Tools / Dependencies |
 | :--- | :--- | :--- |
-| **`index.js`** | Master pipeline orchestrator. Executes ingestion, AI analysis, file persistence, database synchronization, and template formatting. | Node.js Runtime |
+| **`index.js`** | Master pipeline orchestrator. Executes ingestion, AI analysis, database synchronization, and template formatting. | Node.js Runtime |
 | **`services/fetcher.js`** | Fetches live IPOs directly from internal cloud report endpoints (`msg: 1`). Normalizes price bands, lot sizes, subscription multiples, and applies 7-day listed / 15-day upcoming retention rules. | Native `fetch`, Regex Data Sanitizer |
 | **`services/aiAnalyzer.js`** | Evaluates GMP percentage growth/drop transitions, expected lot profit, risk tiers, and lifecycle-aware ratings (1.0 to 5.0 stars). Never flags upcoming IPOs as Avoid. | Mathematical Model |
 | **`services/allotmentService.js`** | Resolves the designated SEBI-registered registrar (*Link Intime*, *KFintech*, *Bigshare*, *Maashitla*, *Skyline*, *Purva*) and generates direct 1-click verification links alongside the BSE Universal portal. | RTA Registry Engine |
 | **`services/whatsappBot.js`** | Self-hosted WhatsApp automation socket. Handles QR code pairing, multi-file session recovery, community announcement broadcasting, and interactive user auto-replies. | `@whiskeysockets/baileys`, `qrcode-terminal` |
 | **`services/notificationEngine.js`** | Event-driven state manager. Tracks notification history in MongoDB, enforces the **Max 2 Instant Alerts/Day** cap, and triggers on $\ge 5\%$ GMP breakout shifts. | Mongoose Models |
 | **`services/scheduler.js`** | 24/7 cron dispatcher. Triggers 08:30 AM Kickoffs, 02:00 PM Action Alerts, 07:00 PM Scorecards, 09:00 PM Pulse, and 15-minute market-hours polling. | Scheduled Time Ticks |
-| **`services/dbService.js`** | MongoDB integration with compound indexes (`IpoMaster`, `IpoDailyGmp`, `Subscriber`). Provides sub-millisecond queries via `.lean()` and `bulkWrite()`. | Mongoose / MongoDB |
+| **`services/dbService.js`** | MongoDB Single Source of Truth (SSOT) with compound indexes (`IpoMaster`, `IpoDailyGmp`, `Subscriber`, `NotificationState`). Provides sub-millisecond queries via `.lean()` and `bulkWrite()`. | Mongoose / MongoDB |
 | **`templates/eventMessages.js`** | WhatsApp formatting engine. Generates mobile-optimized **Card-Tile** bulletins with monospace number badges, emojis, and subtle disclaimers. | String Interpolation |
-| **`dashboard/server.js`** | High-speed static & API server hosting the desktop and mobile dashboard on Port 5050. | Node.js `http`, `fs` |
+| **`dashboard/server.js`** | High-speed static & API server hosting the desktop and mobile dashboard on Port 5050 querying MongoDB directly. | Node.js `http` |
 | **`public/app.js` & `style.css`** | Super-responsive frontend featuring the **7-Column Streamlined Matrix**, real-time filtering tabs, and 1-click WhatsApp letter exports. | Vanilla JS, CSS3 Variables |
 
 ---
@@ -103,19 +114,19 @@ The agent broadcasts **8 distinct, ultra-compact Card-Tile formats** directly in
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   SAMPLE WHATSAPP INTELLIGENCE BULLETINS               │
 ├────────────────────────────────────┬───────────────────────────────────┤
-│ 🌅 08:30 AM MORNING KICKOFF        │ 🔥 02:00 PM FINAL ACTION ALERT    │
-│ ──────────────────────────         │ ──────────────────────────        │
-│ 🌅 *RUN4DREAM IPO KICKOFF* 🚀      │ 🚨 *LAST 2 HOURS — STRONG APPLY*  │
-│ 📅 19 Aug 2026                     │ 🏢 *Lalithaa Jewellery*           │
-│                                    │ ⏳ *Closes at 5:00 PM Today*      │
-│ ⏰ *CLOSING TODAY:*                │ ────────────────────────          │
-│ 🟢 *Lalithaa Jewellery* (M)        │ 💎 *Live GMP:* *+22.1%* (₹44.5) 🚀│
-│ • GMP: *+22.1%* | Profit: *₹3.3k*  │ 💰 *Est. Profit:* *+₹3,293/lot*   │
-│ • Sub: *12.6x* ➔ 🟢 APPLY          │ 📈 *Subscription:* *12.6x* 🔥     │
-│                                    │ 🎯 *ACTION:* *🟢 APPLY AT CUT-OFF*│
-│ 🛑 *Horizon Industrial* (M)        │ ────────────────────────          │
-│ • GMP: *+0.8%* | Sub: *0.37x*      │ 📲 *Join Free Community:* [Link]  │
-│ • Verdict: ❌ AVOID                │ _⚠️ Disclaimer: Educational only._│
+│ 🌅 08:30 AM MORNING KICKOFF        │ 🚨 02:00 PM FINAL ACTION ALERT    │
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━         │ ━━━━━━━━━━━━━━━━━━━━━━━━━━        │
+│ 🌅 *RUN4DREAM IPO KICKOFF* 🚀      │ 🚨 *LAST 2 HOURS — ACTION ALERT*  │
+│ 📅 20 Aug 2026                     │ 🏢 *Lalithaa Jewellery* (M)       │
+│                                    │ ⏰ *Bidding Closes at 5:00 PM*    │
+│ ⏳ *CLOSING TODAY:*                │ ────────────────────────          │
+│ 🏢 *Lalithaa Jewellery* (M)        │ 💎 *GMP:* 🟢 ⬆️ *+22.1%* (`₹44.5`)│
+│ • GMP: 🟢 ⬆️ *+22.1%* (`₹44.5`) 🚀 │ 💰 *Est. Gain:* *`+₹3,293 / lot`* │
+│ • Sub: `14.8x` ➔ 🟢 *[ APPLY ]*    │ 📈 *Total Sub:* `14.8x`           │
+│                                    │ 🎯 *ACTION:* 🟢 *[ STRONG APPLY ]*│
+│ 🏢 *Horizon Industrial* (M)        │ ────────────────────────          │
+│ • GMP: 🔴 ⬇️ *+0.8%* (`₹4.0`)      │ 📲 *Join Community:* [Link]       │
+│ • Sub: `0.42x` ➔ 🛑 *[ AVOID ]*    │ _⚠️ Disclaimer: Educational only._│
 └────────────────────────────────────┴───────────────────────────────────┘
 ```
 
@@ -126,7 +137,7 @@ The agent broadcasts **8 distinct, ultra-compact Card-Tile formats** directly in
 3. ⏳ **02:00 PM — Final 2-Hour Action Alert:** Urgent apply/avoid advisory before 5:00 PM market cut-off.
 4. 📈 **Market Hours (09:15–15:30) — Real-Time Surge Radar:** Instant alert on $\ge 5\%$ GMP breakout shifts and 30x/50x/100x subscription surges.
 5. 🌙 **07:00 PM — Evening Scorecard:** Bidding closed tally and post-close grey market movements.
-6. 🔭 **09:00 PM — Upcoming Pipeline Pulse:** Early heads-up for IPOs opening in the next 15 days.
+6. 🔭 **09:00 PM — Upcoming Pipeline Pulse:** Dispatches alerts ONLY at **T-3 (3 days before)** and **T-1 (1 day before)** bidding opens (e.g., for Aug 20 bidding, alerts are sent on Aug 17 & Aug 19 only).
 7. 🎫 **Allotment Day — Direct Verification Alert:** Direct registrar portal link + BSE Universal PAN check.
 
 ---
@@ -183,23 +194,52 @@ COMMUNITY_INVITE_LINK=https://chat.whatsapp.com/BUbMjwEPEHjBEkJ22LdxBj
 WHATSAPP_TARGET_GROUP_JID=120363409446063630@g.us
 ```
 
-### 3. Pair WhatsApp Bot (One-Time Setup)
+### 3. Pair WhatsApp Bot (One-Time Setup Only)
 ```bash
 npm run whatsapp:login
 ```
 *Point your phone camera to the terminal QR code (**WhatsApp ➔ Settings ➔ Linked Devices ➔ Link a Device**).*
 
-### 4. Run the Pipeline & Start Server
+> 💡 **Note on Permanent Authentication:** WhatsApp login is **100% permanent**. The multi-device keys are stored securely in `data/whatsapp_session/`. You will **never** need to scan the QR code again unless you manually log out from your phone.
+
+### 4. Running the Decoupled Services 🚀
+
+#### Service 1: Web Dashboard & API (Independent of WhatsApp)
 ```bash
-# Ingest live data and run AI analysis:
-node index.js
-
-# Launch the live dashboard:
+# Start the web dashboard (Port 5050):
 npm run dashboard
-# Open http://localhost:5050 in your browser
 
-# Run the 24/7 Autonomous Scheduler:
+# Or with auto-reload (development):
+npm run dashboard:dev
+```
+*Open **`http://localhost:5050`** to view the live 7-column Matrix UI.*
+
+#### Service 2: Autonomous 24/7 Scheduler & WhatsApp Broadcaster
+```bash
+# Start the background worker (Crons + Scraper + WhatsApp dispatches):
 npm run schedule
+```
+*Dispatches 08:30 AM Kickoff, 02:00 PM Final Action Alert, 07:00 PM Scorecard, 09:00 PM Pipeline Pulse, and 15-min market hours surge radar.*
+
+#### Testing & Utility Commands:
+```bash
+# 1. Broadcast ALL 12 distinct card message types & formats (Complete showcase):
+npm run send:all
+
+# 2. Send single live Test Intelligence Digest to your WhatsApp channel:
+npm run send:test
+
+# 3. Broadcast 4 core tables (Kickoff, Top Picks, 2-Hr Alert, Scorecard):
+npm run send:samples
+
+# 4. Manual one-time live data sync to MongoDB:
+npm run sync
+
+# 5. Pair WhatsApp QR Code (One-time setup only):
+npm run whatsapp:login
+
+# 6. Force reset WhatsApp session if re-linking:
+npm run whatsapp:reset
 ```
 
 ---
@@ -211,13 +251,12 @@ ipo-intelligence-agent/
 ├── .env.template                 # Environment variable template
 ├── package.json                  # Dependencies & npm run scripts
 ├── README.md                     # Comprehensive system documentation
-├── index.js                      # Master pipeline entry point
+├── index.js                      # Master pipeline entry point (100% DB-driven)
 ├── config/
 │   └── index.js                  # Global configuration & thresholds
 ├── dashboard/
-│   └── server.js                 # HTTP server (Port 5050) & API endpoints
+│   └── server.js                 # HTTP server (Port 5050) & API endpoints (MongoDB query)
 ├── data/
-│   ├── ipo_dumps/                # Rolling 7-day JSON snapshots
 │   └── whatsapp_session/         # WhatsApp multi-file auth credentials (gitignored)
 ├── public/
 │   ├── index.html                # Streamlined Matrix UI layout
@@ -231,8 +270,7 @@ ipo-intelligence-agent/
 │   ├── fetcher.js                # API ingestion & retention filter engine
 │   ├── aiAnalyzer.js             # Financial analysis & lifecycle verdict engine
 │   ├── allotmentService.js       # SEBI registrar resolution & direct link generator
-│   ├── dbService.js              # MongoDB Mongoose models & bulk upsert engine
-│   ├── fileManager.js            # 7-day rolling snapshot manager & auto-purger
+│   ├── dbService.js              # MongoDB Mongoose models & bulk upsert engine (SSOT)
 │   ├── notificationEngine.js     # Rate-limited state tracking & milestone engine
 │   ├── scheduler.js              # Cron scheduler & market-hours poller
 │   └── whatsappBot.js            # Baileys WhatsApp client & broadcast socket

@@ -1,15 +1,16 @@
 # Node.js dependencies
 node_modules/
+package-lock.json
 
 # Environment variables (NEVER commit secrets or phone session configs)
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.template
+!.env.example
 
-# WhatsApp Baileys Auth Session & Credentials
-data/whatsapp_session/
+# All runtime generated data, dumps, and sessions
+data/
+data/**
 *.session
 
 # Logs
@@ -26,6 +27,7 @@ lerna-debug.log*
 *.pid
 *.seed
 *.pid.lock
+.pm2/
 
 # OS & Editor artifacts
 .DS_Store
@@ -37,3 +39,4 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
